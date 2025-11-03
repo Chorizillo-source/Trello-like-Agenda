@@ -44,6 +44,3 @@ No build tools or servers required.
 ## Notes
 - If the theme toggle doesn’t switch, ensure the small snippet in `app.js` is present:
   - Query `themeToggle`, apply saved theme before the initial render, and toggle `.light` on `<html>` while persisting to `localStorage`.
-
-## License
-MIT
