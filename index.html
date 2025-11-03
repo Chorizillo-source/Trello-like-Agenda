@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your personal agenda</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo">PA</div>
+      <h1>Your personal agenda</h1>
+    </div>
+    <div class="actions">
+      <button id="theme-toggle" class="btn outline" title="Toggle theme">Light/Dark</button>
+      <button id="add-list-btn" class="btn primary">+ Add list</button>
+      <button id="clear-board-btn" class="btn danger reset-top" title="Reset demo data">Reset</button>
+    </div>
+  </header>
+
+  <main id="board" class="board" aria-label="Kanban board" tabindex="0"></main>
+
+  <!-- Dialogs -->
+  <dialog id="card-dialog" class="dialog">
+    <form method="dialog" class="dialog-content">
+      <h3 id="card-dialog-title">Edit Card</h3>
+      <label>
+        Title
+        <input id="card-title-input" type="text" placeholder="Card title" required />
+      </label>
+      <label>
+        Description
+        <textarea id="card-desc-input" rows="6" placeholder="Add a more detailed description..."></textarea>
+      </label>
+      <div class="dialog-actions">
+        <button value="cancel" class="btn">Cancel</button>
+        <button id="card-save-btn" value="default" class="btn primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="confirm-dialog" class="dialog">
+    <form method="dialog" class="dialog-content">
+      <h3 id="confirm-title">Confirm</h3>
+      <p id="confirm-message">Are you sure?</p>
+      <div class="dialog-actions">
+        <button value="cancel" class="btn">Cancel</button>
+        <button id="confirm-accept" value="default" class="btn danger">Delete</button>
+      </div>
+    </form>
+  </dialog>
+
+  <template id="list-template">
+    <section class="list" draggable="true">
+      <header class="list-header">
+        <input class="list-title" value="List" />
+        <div class="list-actions">
+          <button class="icon-btn move-left" title="Move list left" aria-label="Move list left">◀</button>
+          <button class="icon-btn move-right" title="Move list right" aria-label="Move list right">▶</button>
+          <button class="icon-btn delete-list" title="Delete list" aria-label="Delete list">✕</button>
+        </div>
+      </header>
+      <div class="cards" aria-label="Cards" tabindex="0"></div>
+      <footer class="list-footer">
+        <button class="btn text add-card">+ Add card</button>
+      </footer>
+    </section>
+  </template>
+
+  <template id="card-template">
+    <article class="card" draggable="true">
+      <div class="card-title"></div>
+      <div class="card-actions">
+        <button class="icon-btn edit-card" title="Edit">✎</button>
+        <button class="icon-btn delete-card" title="Delete">✕</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
